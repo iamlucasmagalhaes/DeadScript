@@ -28,7 +28,7 @@ function renderArray(){
             const pixelIndex = column + (width * row)
              
             html += '<td>'
-            html += pixelIndex
+            html += array[pixelIndex]
             html += '</td>'
         }
 
