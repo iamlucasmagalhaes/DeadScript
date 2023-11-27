@@ -7,12 +7,17 @@ function start(){
     renderArray()
 }
 
+//gera um número aleatório entre os valores passados por parámetros
+function randomNumber(max, min){
+    return Math.random() * (max - min) + min
+}
+
 //cria o meu array
 function createArray(){
     const numberOfPixel = width * height
 
     for(let cont = 0; cont < numberOfPixel; cont++){
-        array[cont] = 0
+        array[cont] = Math.floor(randomNumber(10, 1))
     }
 }
 
