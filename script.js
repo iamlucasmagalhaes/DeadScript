@@ -1,6 +1,7 @@
 const array = []
-const width = 2
-const height = 3
+const width = 4
+const height = 5
+const currentPosition = 0 //armazena a posição atual do jogador
 
 function start(){
     createArray()
@@ -30,10 +31,18 @@ function renderArray(){
 
         for(let column = 0; column < width; column++){
             //converte um vetor de linha e coluna, e transforma em um vetor unidirecional
-            const pixelIndex = column + (width * row)
+            const zombies = column + (width * row)
+            const pixelIndex = column + width * row;
+
+            //recebe o meu indice e compara se ele é identico a minha posição atual
+            const isFirstElement = zombies === currentPosition
+
+            //compara se a minha posição é a 0, caso seja verdadeiro ela chama a classe "first-element"
+            const cellClass = isFirstElement ? 'first-element' : ''
              
-            html += '<td>'
-            html += array[pixelIndex]
+            html += `<td class = "${cellClass}">`
+            html += `<div class = "pixel-index">${pixelIndex}</div>`
+            html += array[zombies]
             html += '</td>'
         }
 
