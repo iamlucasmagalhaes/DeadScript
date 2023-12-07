@@ -1,6 +1,7 @@
 const array = []
 const width = 4
 const height = 5
+let ammunition = 50 //munição
 let currentPosition = 0 //armazena a posição atual do jogador
 
 function start(){
@@ -52,7 +53,6 @@ function renderArray(){
 
     html += '</table>'
 
-
     document.querySelector('#field').innerHTML = html
 }
 
@@ -90,10 +90,24 @@ function moveSquare(offset) {
 
     //verifica se a nova posição do quadrado está dentro dos limites do array
     if (newPosition >= 0 && newPosition < array.length) {
-        array[currentPosition] = 0 // Limpa a posição anterior
+        array[currentPosition] = 0 //restaura o valor da posição atual antes de mover, evita que o valor seja permanentemente definida como 0
+
         currentPosition = newPosition
-        array[currentPosition] = 'X' // Coloca o quadrado vermelho na nova posição
+
+        //armazena o valor presente na minha posição do array em uma variavel, que é passado como parâmetro para a função updateAmmunition(currentValue)
+        const currentValue = array[currentPosition]
+        array[currentPosition] = 0 //atualiza o posição atual do meu vetor com o número 0
+        updateAmmunition(currentValue)
     }
+}
+
+//faz a subtração da variável ammunition com a variável currentValue
+function updateAmmunition(currentValue) {
+    ammunition -= currentValue
+    
+    console.log('Munição antes: ' + (ammunition + currentValue))
+    console.log("Subtraindo: " + currentValue)
+    console.log("Ammunition left: " + ammunition)
 }
 
 start()
