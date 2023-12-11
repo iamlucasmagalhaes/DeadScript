@@ -98,6 +98,12 @@ function moveSquare(offset) {
         const currentValue = array[currentPosition]
         array[currentPosition] = 0 //atualiza o posição atual do meu vetor com o número 0
         updateAmmunition(currentValue)
+
+        if(currentPosition === array.length - 1 && ammunition >= 0) {
+            window.alert("Parabens! Você venceu.")
+
+            setTimeout(function() {location.reload()}, 1000)
+        }
     }
 }
 
@@ -108,6 +114,16 @@ function updateAmmunition(currentValue) {
     console.log('Munição antes: ' + (ammunition + currentValue))
     console.log("Subtraindo: " + currentValue)
     console.log("Ammunition left: " + ammunition)
+
+    //recarrega a página em caso de derrota
+    if(ammunition < 0){
+        window.alert("Você Perdeu.")
+
+        setTimeout(function() {
+            location.reload()
+        }, 100)
+    }
 }
+
 
 start()
