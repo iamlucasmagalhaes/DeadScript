@@ -3,6 +3,9 @@ const width = 4
 const height = 5
 let ammunition = 50 //munição
 let currentPosition = 0 //armazena a posição atual do jogador
+var countAmmunition = window.document.querySelector('.ammunition')
+
+countAmmunition.textContent = "Ammunition: " + ammunition
 
 function start(){
     createArray()
@@ -123,7 +126,9 @@ function updateAmmunition(currentValue) {
             location.reload()
         }, 100)
     }
-}
 
+    //atualiza o meu elemento HTML que exibe a munição
+    countAmmunition.textContent = "Ammunition: " + ammunition
+}
 
 start()
